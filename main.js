@@ -21,15 +21,15 @@ map.on('drag', function() {
 
 
 const defaultFeatureStyle = {
-    weight: 1,             // Border weight
-    color: '#779FA1',        // Border color
-    dashArray: '3',        // Border dash
-    fillOpacity: 0.0       // Fill opacity
+    weight: 0.6,
+    color: '#C49BBB',
+    dashArray: '3',
+    fillOpacity: 0.0
 };
 
 const highlightFeatureStyle = {
     weight: 3,
-    color: '#DD7596',
+    color: '#779FA1',
     dashArray: '',
     fillOpacity: 0.5
 }
@@ -51,13 +51,33 @@ function resetHighlight(e) {
 }
 
 
+function showSidebar(countryName, countryCode) {
+    const sidebar = document.getElementById('sidebar');
+    const sidebarContent = document.getElementById('sidebar-content');
+
+    const flagUrl = `https://cdn.jsdelivr.net/gh/hampusborgos/country-flags@main/svg/${countryCode.toLowerCase()}.svg`;
+
+
+    sidebarContent.innerHTML = `
+    <h2>
+    ${countryName}
+    <img src="${flagUrl}" alt="Flag of ${countryName}" style="width: 30px; height: 20px; margin-left: 10px;">
+    </h2>
+    <p>This is ${countryName}. More details shall go here.</p>`;
+
+    sidebar.classList.add('active');
+}
+
+
+
 function onEachFeature(feature, layer) {
     layer.on({
         mouseover: highlightFeature,
         mouseout: resetHighlight,
         click: function(e) {
-            var featureName =  feature.properties.name || "Unknown";
-            layer.bindPopup("<b>" + featureName + "</b><br> You clicked this country!").openPopup();
+            var featureName =  feature.properties.ADMIN || "Unknown";
+            var countryCode = feature.properties.ISO_A2 || "";
+            showSidebar(featureName, countryCode);
         }
 
     })
@@ -77,3 +97,11 @@ fetch('countries.geojson')
         geojsonLayer.addData(data);
     })
     .catch(error => console.log('Error loading GeoJSON data:', error));
+
+
+
+
+document.getElementById('closeBtn').addEventListener('click', function() {
+    document.getElementById('sidebar').classList.remove('active');
+
+});
