@@ -11,6 +11,7 @@ L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/dark-v10/tiles/{z}/{x}/{y}?
     attribution: '© <a href="https://www.mapbox.com/about/maps/">Mapbox</a> © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>',
     minZoom: 3,
     maxZoom: 7,
+    noWrap: false
 }).addTo(map);
 
 map.setMaxBounds(bounds);
