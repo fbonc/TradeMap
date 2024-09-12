@@ -53,19 +53,20 @@ function resetHighlight(e) {
 
 
 function getTradeData(countryCode) {
-    fetch(`https://comtradeapi.un.org/v1/get?max=500&type=C&freq=A&px=HS&ps=2020&r=${countryCode}&p=all&rg=all&cc=TOTAL&fmt=json`, {
-        headers: {
-            'Access-Control-Allow-Origin': 'ab4cb30ca44a489e8ad0cedb9a6a21e4'
-        }
-    })
+    const apiUrl = `https://your-vercel-project.vercel.app/api/trade?countryCode=${countryCode}`;
+
+    fetch(apiUrl)
     .then(response => {
-        if(!response.ok) {
+        if (!response.ok) {
             throw new Error('Network response was not ok');
         }
         return response.json();
     })
-    .then(data => console.log(data))
-    .catch(error => console.error('Error fetching Comtrade data:', error));
+    .then(data => {
+        console.log(data);
+        showTradeDataInSidebar(data);  // Display trade data in the sidebar
+    })
+    .catch(error => console.error('Error fetching trade data:', error));
 }
 
 
@@ -96,7 +97,7 @@ function onEachFeature(feature, layer) {
             var featureName =  feature.properties.ADMIN || "Unknown";
             var countryCode = feature.properties.ISO_A2 || "";
             showSidebar(featureName, countryCode);
-            getTradeData(countryCode)
+            getTradeData(countryCode);
         }
 
     })
