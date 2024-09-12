@@ -95,7 +95,7 @@ function onEachFeature(feature, layer) {
         mouseout: resetHighlight,
         click: function(e) {
             var featureName =  feature.properties.ADMIN || "Unknown";
-            var countryCode = feature.properties.ISO_A2 || "";
+            var countryCode = feature.properties.ISO_A3 || "";
             showSidebar(featureName, countryCode);
             getTradeData(countryCode);
         }
