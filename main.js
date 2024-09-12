@@ -52,6 +52,23 @@ function resetHighlight(e) {
 }
 
 
+function getTradeData(countryCode) {
+    fetch(`https://comtradeapi.un.org/v1/get?max=500&type=C&freq=A&px=HS&ps=2020&r=${countryCode}&p=all&rg=all&cc=TOTAL&fmt=json`, {
+        headers: {
+            'Access-Control-Allow-Origin': 'ab4cb30ca44a489e8ad0cedb9a6a21e4'
+        }
+    })
+    .then(response => {
+        if(!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
+    .then(data => console.log(data))
+    .catch(error => console.error('Error fetching Comtrade data:', error));
+}
+
+
 function showSidebar(countryName, countryCode) {
     const sidebar = document.getElementById('sidebar');
     const sidebarContent = document.getElementById('sidebar-content');
@@ -79,6 +96,7 @@ function onEachFeature(feature, layer) {
             var featureName =  feature.properties.ADMIN || "Unknown";
             var countryCode = feature.properties.ISO_A2 || "";
             showSidebar(featureName, countryCode);
+            getTradeData(countryCode)
         }
 
     })
@@ -95,8 +113,11 @@ var geojsonLayer = L.geoJson(null, {
 fetch('countries.geojson')
     .then(response => response.json())
     .then(data => {
-        geojsonLayer.addData(data);
+        const filteredData = data.features.filter(feature => feature.properties.ADMIN !== "Antarctica");
+
+        geojsonLayer.addData(filteredData);
     })
+    
     .catch(error => console.log('Error loading GeoJSON data:', error));
 
 
