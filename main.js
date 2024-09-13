@@ -53,7 +53,7 @@ function resetHighlight(e) {
 
 
 function getTradeData(countryCode) {
-    const apiUrl = `https://your-vercel-project.vercel.app/api/trade?countryCode=${countryCode}`;
+    const apiUrl = `https://trademap-backend.vercel.app/api/trade?countryCode=${countryCode}`;
 
     fetch(apiUrl)
     .then(response => {
@@ -64,7 +64,6 @@ function getTradeData(countryCode) {
     })
     .then(data => {
         console.log(data);
-        showTradeDataInSidebar(data);  // Display trade data in the sidebar
     })
     .catch(error => console.error('Error fetching trade data:', error));
 }
@@ -95,7 +94,7 @@ function onEachFeature(feature, layer) {
         mouseout: resetHighlight,
         click: function(e) {
             var featureName =  feature.properties.ADMIN || "Unknown";
-            var countryCode = feature.properties.ISO_A3 || "";
+            var countryCode = feature.properties.ISO_A2 || "";
             showSidebar(featureName, countryCode);
             getTradeData(countryCode);
         }
