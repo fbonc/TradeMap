@@ -52,20 +52,22 @@ function resetHighlight(e) {
 }
 
 
-function getTradeData(countryCode) {
-    const apiUrl = `https://trademap-backend.vercel.app/api/trade?countryCode=${countryCode}`;
+
+function getTradeData(countryCodeA3, year) {
+    // Send the ISO_A3 code and year to the backend
+    const apiUrl = `https://trademap-backend.vercel.app/api/trade?countryCodeA3=${countryCodeA3}&year=${year}`;
 
     fetch(apiUrl)
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        return response.json();
-    })
-    .then(data => {
-        console.log(data);
-    })
-    .catch(error => console.error('Error fetching trade data:', error));
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log(data);
+        })
+        .catch(error => console.error('Error fetching trade data:', error));
 }
 
 
@@ -94,9 +96,10 @@ function onEachFeature(feature, layer) {
         mouseout: resetHighlight,
         click: function(e) {
             var featureName =  feature.properties.ADMIN || "Unknown";
-            var countryCode = feature.properties.ISO_A2 || "";
-            showSidebar(featureName, countryCode);
-            getTradeData(countryCode);
+            var countryCodeA2 = feature.properties.ISO_A2 || "";
+            var countryCodeA3 = feature.properties.ISO_A3 || "";
+            showSidebar(featureName, countryCodeA2);
+            getTradeData(countryCodeA3, 2022);
         }
 
     })
