@@ -13,6 +13,14 @@
 <body>
     <div id = "map"></div>
 
+    <div id="year-picker-container">
+        <button id="left-arrow" class="arrow-button" onclick="changeYear(-1)"><</button>
+        <input type="text" id="year-display" name="year-display" maxlength="4">
+        <button id="right-arrow" class="arrow-button" onclick="changeYear(1)">></button>
+    </div>
+
+    <script src="year.js"></script>
+
     <div id="sidebar" class="sidebar">
         <button id="closeBtn" class="close-btn">&times;</button>
         <div id="sidebar-content">
@@ -21,7 +29,10 @@
         </div>
     </div>
 
-    <script src="main.js"></script>
+    <script src="map.js"></script>
+    <script src="data.js"></script>
+    <script src="sidebar.js"></script>
+    <script src="lines.js"></script>
 
 </body>
 </html>

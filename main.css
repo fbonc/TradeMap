@@ -1,12 +1,13 @@
 body {
     background-color: #191A1A;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: white;
 }
 
 
 #map {
     position: absolute; 
-    background-color: #191A1A;
+    background: linear-gradient(to bottom, #191A1A 50%, #343332 100%);
     top: 0; 
     bottom: 0;
     left: 0;
@@ -57,8 +58,55 @@ body {
 }
 
 
-/* #sidebar-content h2 {
-    margin: 10px 0;
-    opacity: 1; 
-    width: 80%;
-} */
+
+#year-picker-container {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    margin: 20px;
+    padding-left: 30px;
+}
+
+
+
+#year-display {
+    margin: 0 10px;
+    color: white;
+    text-shadow: 3px 3px 0px #000000;
+    font-weight: lighter;
+    background-color: #00000000;
+    border: 0;
+}
+
+#year-display:focus {
+    outline: none;
+}
+
+
+#year-display, #year-picker-container, .arrow-button {
+    z-index: 2;
+    font-size: 35px;
+}
+
+
+.arrow-button {
+    background-color: #f0f0f000;
+    border: 0px;
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.arrow-button:hover {
+    color: gray;
+    text-shadow:
+    0 0 10px #C49BBB;
+    border-radius: 100%;
+}
+
+
+.arrow-button:active {
+    color: rgb(71, 71, 71);
+}
+
