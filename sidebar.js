@@ -88,7 +88,7 @@ function generateColors(count) {
     const saturation = 80;
 
     for (let i = 0; i < count; i++) {
-        const lightness = 90 - (i * (80 / count));
+        const lightness = 70 - (i * (70 / count));
         colors.push(`hsl(${baseHue}, ${saturation}%, ${lightness}%)`);
     }
     return colors;
