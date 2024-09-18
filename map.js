@@ -116,15 +116,30 @@ fetch('countries.geojson')
 function onEachFeature(feature, layer) {
 
     layer.on({
+
         mouseover: highlightFeature,
         mouseout: resetHighlight,
+
         click: function(e) {
+
             var featureName =  feature.properties.ADMIN || "Unknown";
             var countryCodeA2 = feature.properties.ISO_A2 || "";
-            var countryCodeA3 = feature.properties.ISO_A3 || "";
             var year = document.getElementById('year-display').value;
-            showSidebar(featureName, countryCodeA2);
-            getTradeData(countryCodeA2, year);
+            
+            loadCountryCodes().then(() => { 
+
+                getTradeData(countryCodeA2, year).then(data => {
+
+                    showSidebar(featureName, countryCodeA2, data);
+
+                }).catch(error => {
+
+                    console.error('Error fetching trade data:', error);
+                    showSidebar(featureName, countryCodeA2, []);
+                    
+                });
+
+            });
         }
 
     })

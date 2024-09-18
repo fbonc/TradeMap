@@ -1,19 +1,48 @@
 body {
     background-color: #191A1A;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     color: white;
 }
 
 
 #map {
     position: absolute; 
-    background: linear-gradient(to bottom, #191A1A 50%, #343332 100%);
+    background: linear-gradient(to bottom, #191A1A 56%, #343332 44%);
     top: 0; 
     bottom: 0;
     left: 0;
     right: 0;
     z-index: 1;
 }
+
+
+
+
+
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #464646;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #a3a3a3;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #202020;
+  }
+
+
+
+
 
 
 .sidebar {
@@ -56,6 +85,10 @@ body {
     opacity: 1;
     
 }
+
+
+
+
 
 
 
