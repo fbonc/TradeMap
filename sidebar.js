@@ -30,7 +30,7 @@ function showSidebar(countryName, countryCode, data) {
     }
     dataContent += '</ol>';
 
-    labels.push("Others");
+    labels.push("Other Countries");
     values.push(otherTotal);
 
 
@@ -39,7 +39,7 @@ function showSidebar(countryName, countryCode, data) {
     ${countryName}
     <img src="${flagUrl}" alt="Flag of ${countryName}" style="width: 40px; height: 20px; margin-left: 10px;">
     </h2>
-    <canvas id="pieChart" style="width:auto; max-width:400px; padding-bottom: 50px"></canvas>
+    <canvas id="pieChart" style="width:100%; height: 400px; padding-bottom: 50px"></canvas>
     <p>Partner countries ranked by total export value (USD):</p>
     ${dataContent}`;
 
@@ -84,8 +84,12 @@ function createPieChart(labels, values) {
 
 function generateColors(count) {
     const colors = [];
+    const baseHue = 330;
+    const saturation = 80;
+
     for (let i = 0; i < count; i++) {
-        colors.push(`hsl(${Math.floor((360 / count) * i)}, 70%, 50%)`);
+        const lightness = 90 - (i * (80 / count));
+        colors.push(`hsl(${baseHue}, ${saturation}%, ${lightness}%)`);
     }
     return colors;
 }

@@ -4,7 +4,7 @@ var map = L.map('map', {attributionControl: false,
                         zoomControl: true
                         }).setView([0,0], 1);
 
-                        map.zoomControl.setPosition('bottomright');
+                        map.zoomControl.setPosition('bottomleft');
 
 
 var bounds = [
@@ -136,7 +136,7 @@ function onEachFeature(feature, layer) {
 
                     console.error('Error fetching trade data:', error);
                     showSidebar(featureName, countryCodeA2, []);
-                    
+
                 });
 
             });
