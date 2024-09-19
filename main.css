@@ -181,3 +181,43 @@ background: #202020;
     text-align: center !important;
     cursor: pointer !important;
 }   
+
+
+
+
+
+/* loader: https://uiverse.io/Shoh2008/ugly-elephant-80 */
+#loader {
+    width: 45px;
+    height: 40px;
+    position: absolute;
+    right: 50%;
+    top: 50%;
+    background: linear-gradient(#0000 calc(1*100%/6),#fff 0 calc(3*100%/6),#0000 0),
+              linear-gradient(#0000 calc(2*100%/6),#fff 0 calc(4*100%/6),#0000 0),
+              linear-gradient(#0000 calc(3*100%/6),#fff 0 calc(5*100%/6),#0000 0);
+    background-size: 10px 400%;
+    background-repeat: no-repeat;
+    animation: matrix 1s infinite linear;
+    z-index: 50;
+  }
+  
+@keyframes matrix {
+0% {
+    background-position: 0% 100%, 50% 100%, 100% 100%
+}
+
+100% {
+    background-position: 0% 0%, 50% 0%, 100% 0%
+}
+}
+
+#stopper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
+    background-color: #4e4d4c3b; /* Semi-transparent overlay */
+}

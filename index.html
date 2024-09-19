@@ -31,7 +31,11 @@
         </div>
     </div>
 
-    
+
+    <div id="loader">
+        <div id="stopper"></div>
+    </div>
+
 
     <script src="year.js"></script>
 
@@ -51,6 +55,15 @@
     <script src="data.js"></script>
     <script src="sidebar.js"></script>
     <script src="lines.js"></script>
+
+    <script>
+
+        window.onload = function() {
+            document.getElementById('loader').style.display = 'none';
+        };
+
+
+    </script>
 
 </body>
 </html>

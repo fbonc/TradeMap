@@ -1,3 +1,5 @@
+
+
 let validCountryCodes = [];
 
 function loadCountryCodes() {
@@ -19,6 +21,10 @@ function getTradeData(countryCodeA2, year, mode) {
 
     const apiUrl = `https://trademap-backend.vercel.app/api/trade?countryCodeA2=${countryCodeA2}&year=${year}&mode=${mode}`;
 
+    let loaderTimeout = setTimeout(() => {
+        document.getElementById('loader').style.display = 'block';
+    }, 1500);
+
     return fetch(apiUrl)
         .then(response => {
             if (!response.ok) {
@@ -28,6 +34,9 @@ function getTradeData(countryCodeA2, year, mode) {
         })
         .then(data => {
             return processTradeData(data);
+        }).finally(() => {
+            clearTimeout(loaderTimeout);
+            document.getElementById('loader').style.display = 'none';
         });
         
 }
@@ -49,10 +58,11 @@ function processTradeData(data) {
                     exports: obsValue * Math.pow(10, 6) //convert @OBS_VALUE to actual value (* 10^6)
                 });
             } else {
-                console.warn(`No valid Obs data for country: ${counterpartArea}`);
+                //console.warn(`No valid Obs data for country: ${counterpartArea}`);
+                
             }
         } else {
-            console.warn(`Country code ${counterpartArea} not in codes.json`);
+            //console.warn(`Country code ${counterpartArea} not in codes.json`);
         }
     });
 

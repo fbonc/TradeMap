@@ -8,7 +8,7 @@
     left: 220px; /* Adjust this value to control the horizontal position */
     width: 150px; /* Adjust width to match the button width */
     height: 50px; /* Adjust height to match the button height */
-    z-index: 1000; /* Ensure it's on top of other elements */
+    z-index: 5; /* Ensure it's on top of other elements */
   }
 
 .button-cover {

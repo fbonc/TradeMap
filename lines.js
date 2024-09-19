@@ -10,7 +10,11 @@ function drawArcs(referenceCountry, tradeResults, topPartnerValue, mode) {
 
     map.curveLayer = L.layerGroup().addTo(map);
 
+    let countryNum = 0;
+
     tradeResults.forEach(trade => {
+        countryNum += 1;
+
         const destinationCountry = trade.country;
         const exportsValue = trade.exports;
 
@@ -19,9 +23,8 @@ function drawArcs(referenceCountry, tradeResults, topPartnerValue, mode) {
 
         let weight = (exportsValue * 15) / topPartnerValue;
 
-        if (weight > 1) {
+        if (weight > 1 || countryNum <= 8) {
             if (referenceCoords && destinationCoords) {
-
 
                 animateCurve(referenceCoords, destinationCoords, weight, mode);
             } else {
@@ -67,9 +70,10 @@ function animateCurve(referenceCoords, destinationCoords, weight, mode) {
     
     const path = L.polyline(curvePoints, {
         color: `${colour}`,
-        weight: getBaseLog(1.3, weight),
+        weight: getBaseLog(2, weight),
         className: 'animated-curve',
-        snakingSpeed: 700
+        snakingSpeed: 700,
+        //dashArray: '5, 2'
     });
 
     if (map.curveLayer) {
@@ -85,15 +89,35 @@ function animateCurve(referenceCoords, destinationCoords, weight, mode) {
 
 
 
+let centroids = {};
+
+fetch('centroids.geojson')
+    .then(response => response.json())
+    .then(data => {
+        data.features.forEach(feature => {
+            const countryCode = feature.properties.ISO;
+            const coordinates = feature.geometry.coordinates;
+            centroids[countryCode] = { lat: coordinates[1], lng: coordinates[0] }; // Store as lat/lng
+        });
+    })
+    .catch(error => console.error('Error loading centroids data:', error));
+
+
+
 
 function getCountryCoordinates(countryCode) {
 
-    let countryFeature = geojsonLayer.getLayers().find(layer => layer.feature.properties.ISO_A2 === countryCode);
-    
-    if (countryFeature) {
+    if (centroids[countryCode]) {
+        const center = centroids[countryCode];
+        //console.log(`Using centroid for ${countryCode}: ${center.lat}, ${center.lng}`);
+        return center;
+    }
 
+    const countryFeature = geojsonLayer.getLayers().find(layer => layer.feature.properties.ISO_A2 === countryCode);
+
+    if (countryFeature) {
         const center = countryFeature.getBounds().getCenter();
-        console.log(`Coordinates for ${countryCode}: ${center.lat}, ${center.lng}`);
+        console.log(`Using geojson layer center for ${countryCode}: ${center.lat}, ${center.lng}`);
         return center;
     }
 
