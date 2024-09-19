@@ -112,6 +112,11 @@ fetch('countries.geojson')
 
 
 
+const toggleSwitch = document.querySelector('#button-3 .checkbox');
+function getToggleContent() {
+    return toggleSwitch.checked ? 'imports' : 'exports';
+}
+
     
 function onEachFeature(feature, layer) {
 
@@ -125,12 +130,15 @@ function onEachFeature(feature, layer) {
             var featureName =  feature.properties.ADMIN || "Unknown";
             var countryCodeA2 = feature.properties.ISO_A2 || "";
             var year = document.getElementById('year-display').value;
+            const mode = getToggleContent();
+            
             
             loadCountryCodes().then(() => { 
 
-                getTradeData(countryCodeA2, year).then(data => {
+                getTradeData(countryCodeA2, year, mode).then(data => {
 
-                    showSidebar(featureName, countryCodeA2, data);
+                    showSidebar(featureName, countryCodeA2, data, mode);
+                    drawArcs(countryCodeA2, data, data[0].exports, mode);
 
                 }).catch(error => {
 

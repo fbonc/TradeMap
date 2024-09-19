@@ -2,7 +2,7 @@ function getBaseLog(x, y) {
     return Math.log(y) / Math.log(x);
   }
 
-function drawArcs(referenceCountry, tradeResults, topPartnerValue) {
+function drawArcs(referenceCountry, tradeResults, topPartnerValue, mode) {
 
     if (map.curveLayer) {
         map.curveLayer.remove();
@@ -22,7 +22,8 @@ function drawArcs(referenceCountry, tradeResults, topPartnerValue) {
         if (weight > 1) {
             if (referenceCoords && destinationCoords) {
 
-                animateCurve(referenceCoords, destinationCoords, weight);
+
+                animateCurve(referenceCoords, destinationCoords, weight, mode);
             } else {
                 console.warn(`Invalid coordinates for arc between ${referenceCountry} and ${destinationCountry}`);
             }
@@ -32,7 +33,12 @@ function drawArcs(referenceCountry, tradeResults, topPartnerValue) {
 }
 
 
-function createCurvePoints(referenceCoords, destinationCoords, steps = 100) {
+function createCurvePoints(referenceCoords, destinationCoords, mode, steps = 100) {
+
+    if (mode === 'imports') {
+
+        [referenceCoords, destinationCoords] = [destinationCoords, referenceCoords];
+    }
 
     const curvePoints = [];
     const controlLat = (referenceCoords.lat + destinationCoords.lat) / 2 + 10;
@@ -48,12 +54,19 @@ function createCurvePoints(referenceCoords, destinationCoords, steps = 100) {
 
 }
 
-function animateCurve(referenceCoords, destinationCoords, weight) {
+function animateCurve(referenceCoords, destinationCoords, weight, mode) {
 
-    const curvePoints = createCurvePoints(referenceCoords, destinationCoords);
+    const curvePoints = createCurvePoints(referenceCoords, destinationCoords, mode);
+
+    let colour;
+    if (mode === 'exports') {
+        colour = '#00BFFF';
+    } else {
+        colour = '#C6011F';
+    }
     
     const path = L.polyline(curvePoints, {
-        color: '#03a9f4',
+        color: `${colour}`,
         weight: getBaseLog(1.3, weight),
         className: 'animated-curve',
         snakingSpeed: 700

@@ -29,10 +29,11 @@ function showSidebar(countryName, countryCode, data, mode) {
     let colours = [];
 
     if (mode == 'exports') {
-        colours = ['#ffd100', '#c3dfe3', '#a63c06', "hsl(220, 70%, 80%)", "hsl(220, 70%, 70%)","hsl(220, 70%, 60%)","hsl(220, 70%, 50%)","hsl(220, 70%, 40%)", '#343332'];
+        colours = ['#008585', '#43b0f1', '#8a508f', '#bc5090', '#ff6361', '#ff8531', '#ffa600', '#ffd380', '#343332'];
     } else if (mode == 'imports') {
-        colours = ['#ffd100', '#c3dfe3', '#a63c06', "hsl(360, 70%, 80%)", "hsl(360, 70%, 70%)","hsl(360, 70%, 60%)","hsl(360, 70%, 50%)","hsl(360, 70%, 40%)", '#343332'];
+        colours = ['#ff595e', '#ff924c', '#ffca3a', '#8ac926', '#52a675', '#1982c4', '#4267ac', '#6a4c93', '#343332'];
     }
+
 
 
 
