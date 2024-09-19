@@ -23,7 +23,7 @@ function getTradeData(countryCodeA2, year, mode) {
 
     let loaderTimeout = setTimeout(() => {
         document.getElementById('loader').style.display = 'block';
-    }, 1500);
+    }, 500);
 
     return fetch(apiUrl)
         .then(response => {

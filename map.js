@@ -117,7 +117,6 @@ function getToggleContent() {
     return toggleSwitch.checked ? 'imports' : 'exports';
 }
 
-    
 function onEachFeature(feature, layer) {
 
     layer.on({
@@ -132,7 +131,8 @@ function onEachFeature(feature, layer) {
             var year = document.getElementById('year-display').value;
             const mode = getToggleContent();
             
-            
+            console.log(featureName);
+
             loadCountryCodes().then(() => { 
 
                 getTradeData(countryCodeA2, year, mode).then(data => {

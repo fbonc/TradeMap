@@ -1,6 +1,4 @@
-window.onload = function() {
-    loadCountryNames();
-};
+
 
 let countryNamesMap = {};
 
