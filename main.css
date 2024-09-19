@@ -97,12 +97,13 @@ background: #202020;
 /* YEAR PICKER */
 
 #year-picker-container {
-    top: 30px;
-    left: 50px;
+    top: 12px;
+    left: 12px;
     display: flex;
     position: absolute;
     background-color: #818181;
-    width: 150px;
+    width: 130px;
+    height: 50px;
     
 }
 
@@ -115,7 +116,7 @@ background: #202020;
     font-weight: 100;
     background-color: #00000000;
     border: 0;
-    width: 86px;
+    width: 72px;
 }
 
 #year-display:focus {
@@ -125,7 +126,7 @@ background: #202020;
 
 #year-display, #year-picker-container, .arrow-button {
     z-index: 2;
-    font-size: 36px;
+    font-size: 30px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
@@ -137,7 +138,7 @@ background: #202020;
     cursor: pointer;
     z-index: 2;
     background-color: #4e4d4c;
-    width: 45px;
+    width: 38px;
     margin-left: -2px;
 }
 
@@ -158,3 +159,25 @@ background: #202020;
     pointer-events: none;
 }
 
+
+
+
+
+/* Zoom Control */
+.leaflet-control-zoom {
+    background-color: #818181 !important;
+    border-radius: 5px !important;
+    padding: 5px !important;
+}
+
+.leaflet-control-zoom-in,
+.leaflet-control-zoom-out {
+    background-color: #4e4d4c !important;
+    color: white !important;
+    border-radius: 3px !important;
+    width: 30px !important;
+    height: 30px !important;
+    line-height: 30px !important;
+    text-align: center !important;
+    cursor: pointer !important;
+}   
