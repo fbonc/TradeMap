@@ -3,6 +3,7 @@ function getBaseLog(x, y) {
   }
 
 function drawArcs(referenceCountry, tradeResults, topPartnerValue) {
+
     if (map.curveLayer) {
         map.curveLayer.remove();
     }
@@ -20,17 +21,19 @@ function drawArcs(referenceCountry, tradeResults, topPartnerValue) {
 
         if (weight > 1) {
             if (referenceCoords && destinationCoords) {
-                // Animate the curve
+
                 animateCurve(referenceCoords, destinationCoords, weight);
             } else {
                 console.warn(`Invalid coordinates for arc between ${referenceCountry} and ${destinationCountry}`);
             }
         }
     });
+
 }
 
 
 function createCurvePoints(referenceCoords, destinationCoords, steps = 100) {
+
     const curvePoints = [];
     const controlLat = (referenceCoords.lat + destinationCoords.lat) / 2 + 10;
     const controlLng = (referenceCoords.lng + destinationCoords.lng) / 2 + 10;
@@ -42,28 +45,28 @@ function createCurvePoints(referenceCoords, destinationCoords, steps = 100) {
         curvePoints.push([lat, lng]);
     }
     return curvePoints;
+
 }
 
 function animateCurve(referenceCoords, destinationCoords, weight) {
+
     const curvePoints = createCurvePoints(referenceCoords, destinationCoords);
     
-    // Create the polyline with multiple points for a smooth curve
     const path = L.polyline(curvePoints, {
         color: '#03a9f4',
         weight: getBaseLog(1.3, weight),
         className: 'animated-curve',
-        snakingSpeed: 700 // Adjust this value to change the speed
+        snakingSpeed: 700
     });
 
-    // Add the path to the map
     if (map.curveLayer) {
         map.curveLayer.addLayer(path);
     } else {
         map.curveLayer = L.layerGroup([path]).addTo(map);
     }
 
-    // Use the snakeIn animation
     path.snakeIn();
+
 }
 
 
