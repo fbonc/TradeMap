@@ -15,9 +15,9 @@ function loadCountryCodes() {
 }
 
 
-function getTradeData(countryCodeA2, year) {
+function getTradeData(countryCodeA2, year, mode) {
 
-    const apiUrl = `https://trademap-backend.vercel.app/api/trade?countryCodeA2=${countryCodeA2}&year=${year}`;
+    const apiUrl = `https://trademap-backend.vercel.app/api/trade?countryCodeA2=${countryCodeA2}&year=${year}&mode=${mode}`;
 
     return fetch(apiUrl)
         .then(response => {

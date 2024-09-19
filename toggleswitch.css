@@ -1,0 +1,114 @@
+/*https://uiverse.io/JaydipPrajapati1910/brave-rattlesnake-29*/
+
+
+.toggle-button-cover {
+    display: flex;
+    position: absolute; /* Change to absolute to position it freely */
+    top: 30px; /* Adjust this value to control the vertical position */
+    left: 300px; /* Adjust this value to control the horizontal position */
+    width: 180px; /* Adjust width to match the button width */
+    height: 60px; /* Adjust height to match the button height */
+    z-index: 1000; /* Ensure it's on top of other elements */
+  }
+
+.button-cover {
+  height: 100px;
+  margin: 20px;
+  background-color: #fff;
+  box-shadow: 0 10px 20px -8px #c5d6d6;
+  border-radius: 0px;
+}
+
+.button-cover:before {
+  counter-increment: button-counter;
+  content: counter(button-counter);
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  color: #9e9e9e;
+  font-size: 12px;
+  line-height: 1;
+  padding: 5px;
+}
+
+.button-cover,
+.knobs,
+.layer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.button {
+    position: relative;
+    width: 180px;
+    height: 60px;
+    overflow: hidden;
+  }
+
+.checkbox {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 3;
+}
+
+.knobs {
+  z-index: 2;
+}
+
+.layer {
+  width: 100%;
+  background-color: #818181;
+  transition: 0.3s ease all;
+  z-index: 1;
+}
+
+.button.r,
+.button.r .layer {
+  border-radius: 0px;
+}
+
+#button-3 .knobs:before {
+  content: "EX";
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 75px;
+  height: 34px;
+  color: #fff;
+  font-weight: bold;
+  font-size: 30px;
+  text-shadow: 3px 3px 0px #000000;
+  text-align: center;
+  line-height: 1;
+  padding: 9px 4px;
+  background-color: #03a9f4;
+  border-radius: 0%;
+  transition: 0.3s ease all, left 0.3s cubic-bezier(0.18, 0.89, 0.35, 1.15);
+}
+
+#button-3 .checkbox:active + .knobs:before {
+  width: 46px;
+  border-radius: 0px;
+}
+
+#button-3 .checkbox:checked:active + .knobs:before {
+  margin-left: -26px;
+}
+
+#button-3 .checkbox:checked + .knobs:before {
+  content: "IM";
+  left: 93px;
+  background-color: #f44336;
+}
+
+#button-3 .checkbox:checked ~ .layer {
+  background-color: #9e9e9e;
+}

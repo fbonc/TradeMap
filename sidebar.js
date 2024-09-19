@@ -17,25 +17,31 @@ function loadCountryNames() {
 
 }
 
+// const colours = ['#ffd100', '#c3dfe3', '#a63c06', "hsl(220, 70%, 80%)", "hsl(220, 70%, 70%)","hsl(220, 70%, 60%)","hsl(220, 70%, 50%)","hsl(220, 70%, 40%)", '#343332'];
 
-
-
-
-const colours = ['#ffd100', '#c3dfe3', '#a63c06', "hsl(220, 70%, 80%)", "hsl(220, 70%, 70%)","hsl(220, 70%, 60%)","hsl(220, 70%, 50%)","hsl(220, 70%, 40%)", '#343332'];
-
-function showSidebar(countryName, countryCode, data) { 
+function showSidebar(countryName, countryCode, data, mode) { 
     console.log(data)
     const sidebar = document.getElementById('sidebar');
     const sidebarContent = document.getElementById('sidebar-content');
-
     const flagUrl = `https://cdn.jsdelivr.net/gh/hampusborgos/country-flags@main/svg/${countryCode.toLowerCase()}.svg`;
+
+
+    let colours = [];
+
+    if (mode == 'exports') {
+        colours = ['#ffd100', '#c3dfe3', '#a63c06', "hsl(220, 70%, 80%)", "hsl(220, 70%, 70%)","hsl(220, 70%, 60%)","hsl(220, 70%, 50%)","hsl(220, 70%, 40%)", '#343332'];
+    } else if (mode == 'imports') {
+        colours = ['#ffd100', '#c3dfe3', '#a63c06', "hsl(360, 70%, 80%)", "hsl(360, 70%, 70%)","hsl(360, 70%, 60%)","hsl(360, 70%, 50%)","hsl(360, 70%, 40%)", '#343332'];
+    }
+
+
 
     let dataContent = '<ol style="line-height: 2; padding-left: 20px; padding-top: 5px; font-size: 14px;">';
 
     const labels = [];
     const values = [];
 
-
+    let total = 0;
     let otherTotal = 0;
     let dataAvailable = false;
     let colour;
@@ -50,18 +56,15 @@ function showSidebar(countryName, countryCode, data) {
             if (i < 8) {
                 labels.push(data[i].country);
                 values.push(Math.round(data[i].exports));
-
+                total += Math.round(data[i].exports);
                 colour = colours[i];
             } else if (i >= 8) {
-                otherTotal += data[i].exports;
+                otherTotal += Math.round(data[i].exports);
+                total += Math.round(data[i].exports);
             }
 
-            dataContent += `<li><span style="font-size: 14px">${fullCountryName} (${data[i].country}) exports:</span> <span style="color: ${colour}; font-size: 14px;">$${data[i].exports.toLocaleString()}</span></li>`;
+            dataContent += `<li style="white-space: nowrap; overflow: visible"><span style="font-size: 14px">${fullCountryName} (${data[i].country}):</span> <span style="color: ${colour}; font-size: 14px;">$${data[i].exports.toLocaleString()}</span></li>`;
 
-            
-
-            
-            
         }
     } else {
         dataContent += '<span style="color: red">No trade data available at this time. Please try again later.</span>';
@@ -73,6 +76,9 @@ function showSidebar(countryName, countryCode, data) {
     values.push(otherTotal);
 
 
+
+    slicedMode = mode.slice(0, -1);
+
     sidebarContent.innerHTML = `
     <div class="country-header-container">
     <h2 class="country-header">
@@ -82,13 +88,16 @@ function showSidebar(countryName, countryCode, data) {
     </div>
     <canvas id="pieChart" style="width:100%; height: 325px; padding-bottom: 50px"></canvas>
     <hr style="margin-top: -20px; margin-bottom: 20px">
-    <span style="font-size: 15px; font-weight: 700;">Partner countries ranked by total export value (USD):</span>
+    <span style="font-size: 13px; font-weight: 700;">Total ${mode}:</span> <span style="font-size: 14px;">$${total.toLocaleString()}</span><br>
+    <span style="font-size: 13px; font-weight: 700;">Partner countries ranked by total ${slicedMode} value:</span>
     ${dataContent}`;
 
     sidebar.classList.add('active');
 
+
+
     if (dataAvailable) {
-        createPieChart(labels, values);
+        createPieChart(labels, values, slicedMode, colours);
     }
     
 }
@@ -105,7 +114,7 @@ document.getElementById('closeBtn').addEventListener('click', function() {
 
 
 
-function createPieChart(labels, values) {
+function createPieChart(labels, values, mode, colours) {
 
     new Chart("pieChart", {
         type: 'doughnut',
@@ -120,9 +129,12 @@ function createPieChart(labels, values) {
         options: {
             title: {
                 display: true,
-                text: 'Export Distribution',
+                text: `${mode.charAt(0).toUpperCase() + mode.slice(1)} Distribution`,
                 padding: 26,
                 fontSize: 20,
+                fontWeight: 10,
+                fontStyle: "normal",
+                fontColor: '#ffffff',
             },
             legend: {
                 display: false,

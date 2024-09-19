@@ -18,7 +18,7 @@ body {
 
 
 
-
+/* SCROLLBAR */
 
 ::-webkit-scrollbar {
     width: 10px;
@@ -39,11 +39,11 @@ background: #202020;
 
 
 
-
+/* SIDEBAR */
 
 .sidebar {
     position: fixed;
-    right: -800px;
+    right: -400px;
     top: 0;
     width: 350px;
     height: 100%;
@@ -94,14 +94,16 @@ background: #202020;
 
 
 
-
+/* YEAR PICKER */
 
 #year-picker-container {
+    top: 30px;
+    left: 50px;
     display: flex;
-    align-items: center;
-    justify-content: left;
-    margin: 20px;
-    padding-left: 30px;
+    position: absolute;
+    background-color: #818181;
+    width: 150px;
+    
 }
 
 
@@ -113,7 +115,7 @@ background: #202020;
     font-weight: 100;
     background-color: #00000000;
     border: 0;
-    width: 80px;
+    width: 86px;
 }
 
 #year-display:focus {
@@ -123,28 +125,36 @@ background: #202020;
 
 #year-display, #year-picker-container, .arrow-button {
     z-index: 2;
-    font-size: 35px;
+    font-size: 36px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 
 .arrow-button {
-    background-color: #f0f0f000;
     border: 0px;
     color: white;
     padding: 10px;
     cursor: pointer;
     z-index: 2;
+    background-color: #4e4d4c;
+    width: 45px;
+    margin-left: -2px;
 }
 
 .arrow-button:hover {
     color: gray;
     text-shadow:
     0 0 10px #C49BBB;
-    border-radius: 100%;
 }
 
 
 .arrow-button:active {
     color: rgb(71, 71, 71);
+}
+
+
+/* line drawing */
+.animated-curve {
+    pointer-events: none;
 }
 

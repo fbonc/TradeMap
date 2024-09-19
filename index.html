@@ -2,9 +2,11 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="toggleswitch.css">
 
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,6 +21,16 @@
         <button id="right-arrow" class="arrow-button" onclick="changeYear(1)">></button>
     </div>
 
+    <div class="toggle-button-cover">
+        <div id="button-3" class="button r">
+            <input class="checkbox" type="checkbox">
+            <div class="knobs"></div>
+            <div class="layer"></div>
+        </div>
+    </div>
+
+    
+
     <script src="year.js"></script>
 
     <div id="sidebar" class="sidebar">
@@ -31,6 +43,8 @@
         </div>
     </div>
 
+    <script src="https://rawgit.com/elfalem/Leaflet.curve/master/src/leaflet.curve.js"></script>
+    <script src="L.Polyline.SnakeAnim.js"></script>
     <script src="map.js"></script>
     <script src="data.js"></script>
     <script src="sidebar.js"></script>

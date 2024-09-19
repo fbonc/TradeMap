@@ -233,7 +233,7 @@
         "@value": "HK",
         "Description": {
             "@xml:lang": "en",
-            "#text": "Hong Kong, China"
+            "#text": "Hong Kong"
         }
     }, {
         "@value": "CN",
@@ -257,7 +257,7 @@
         "@value": "CD",
         "Description": {
             "@xml:lang": "en",
-            "#text": "Congo, the Democratic Republic of the"
+            "#text": "DR Congo"
         }
     }, {
         "@value": "CG",
@@ -383,7 +383,7 @@
         "@value": "FK",
         "Description": {
             "@xml:lang": "en",
-            "#text": "Falkland Islands (Malvinas)"
+            "#text": "Falkland Islands"
         }
     }, {
         "@value": "FO",
@@ -509,7 +509,7 @@
         "@value": "VA",
         "Description": {
             "@xml:lang": "en",
-            "#text": "Holy See (Vatican City State)"
+            "#text": "Vatican City State"
         }
     }, {
         "@value": "HN",
@@ -545,7 +545,7 @@
         "@value": "IR",
         "Description": {
             "@xml:lang": "en",
-            "#text": "Iran, Islamic Republic of"
+            "#text": "Iran"
         }
     }, {
         "@value": "IQ",
@@ -611,19 +611,19 @@
         "@value": "KP",
         "Description": {
             "@xml:lang": "en",
-            "#text": "Korea, Democratic People`s Republic of"
+            "#text": "North Korea"
         }
     }, {
         "@value": "KR",
         "Description": {
             "@xml:lang": "en",
-            "#text": "Korea, Republic of"
+            "#text": "South Korea"
         }
     }, {
         "@value": "XK",
         "Description": {
             "@xml:lang": "en",
-            "#text": "Kosovo, Republic of"
+            "#text": "Kosovo"
         }
     }, {
         "@value": "KW",
@@ -641,7 +641,7 @@
         "@value": "LA",
         "Description": {
             "@xml:lang": "en",
-            "#text": "Lao People`s Democratic Republic"
+            "#text": "Laos"
         }
     }, {
         "@value": "LV",
@@ -749,13 +749,13 @@
         "@value": "FM",
         "Description": {
             "@xml:lang": "en",
-            "#text": "Micronesia, Federated States of"
+            "#text": "Micronesia"
         }
     }, {
         "@value": "MD",
         "Description": {
             "@xml:lang": "en",
-            "#text": "Moldova, Republic of"
+            "#text": "Moldova"
         }
     }, {
         "@value": "MN",
@@ -851,7 +851,7 @@
         "@value": "MK",
         "Description": {
             "@xml:lang": "en",
-            "#text": "North Macedonia, Republic of "
+            "#text": "North Macedonia"
         }
     }, {
         "@value": "VN",
@@ -941,7 +941,7 @@
         "@value": "RU",
         "Description": {
             "@xml:lang": "en",
-            "#text": "Russian Federation"
+            "#text": "Russia"
         }
     }, {
         "@value": "RW",
@@ -1007,7 +1007,7 @@
         "@value": "SX",
         "Description": {
             "@xml:lang": "en",
-            "#text": "Sint Maarten (Dutch part)"
+            "#text": "Sint Maarten"
         }
     }, {
         "@value": "SK",
@@ -1103,13 +1103,13 @@
         "@value": "SY",
         "Description": {
             "@xml:lang": "en",
-            "#text": "Syrian Arab Republic"
+            "#text": "Syria"
         }
     }, {
         "@value": "TW",
         "Description": {
             "@xml:lang": "en",
-            "#text": "Taiwan, Province of China"
+            "#text": "Taiwan"
         }
     }, {
         "@value": "TJ",
@@ -1121,7 +1121,7 @@
         "@value": "TZ",
         "Description": {
             "@xml:lang": "en",
-            "#text": "Tanzania, United Republic of"
+            "#text": "Tanzania"
         }
     }, {
         "@value": "TH",
@@ -1229,13 +1229,13 @@
         "@value": "VE",
         "Description": {
             "@xml:lang": "en",
-            "#text": "Venezuela, Bolivarian Republic"
+            "#text": "Venezuela,"
         }
     }, {
         "@value": "PS",
         "Description": {
             "@xml:lang": "en",
-            "#text": "Palestine, State of"
+            "#text": "Palestine"
         }
     }, {
         "@value": "YE",
