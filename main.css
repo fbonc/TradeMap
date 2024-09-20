@@ -97,63 +97,56 @@ background: #202020;
 /* YEAR PICKER */
 
 #year-picker-container {
+    position: absolute;
     top: 12px;
     left: 12px;
     display: flex;
-    position: absolute;
+    align-items: center;
     background-color: #818181;
-    width: 130px;
     height: 50px;
-    
+    box-sizing: border-box;
+    z-index: 2;
+    padding: 0;
 }
 
-
-
 #year-display {
-    margin: 0 10px;
+    margin: 0;
     color: white;
     text-shadow: 3px 3px 0px #000000;
     font-weight: 100;
     background-color: #00000000;
     border: 0;
-    width: 72px;
-}
-
-#year-display:focus {
-    outline: none;
-}
-
-
-#year-display, #year-picker-container, .arrow-button {
-    z-index: 2;
+    width: 95px; /* Adjusted width for more space */
+    text-align: center;
     font-size: 30px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    outline: none;
+    padding: 0; /* Remove default padding */
 }
 
-
 .arrow-button {
-    border: 0px;
+    border: 0;
     color: white;
     padding: 10px;
     cursor: pointer;
-    z-index: 2;
     background-color: #4e4d4c;
-    width: 38px;
-    margin-left: -2px;
+    font-size: 30px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    width: 40px;
+    height: 100%; /* Make sure buttons match the height of the container */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .arrow-button:hover {
     color: gray;
-    text-shadow:
-    0 0 10px #C49BBB;
+    text-shadow: 0 0 10px #C49BBB;
 }
-
 
 .arrow-button:active {
     color: rgb(71, 71, 71);
 }
-
-
 /* line drawing */
 .animated-curve {
     pointer-events: none !important;
