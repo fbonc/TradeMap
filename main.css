@@ -214,3 +214,15 @@ background: #202020;
     z-index: 10;
     background-color: #4e4d4c3b; /* Semi-transparent overlay */
 }
+
+
+
+#name {
+    z-index: 10;
+    color: rgba(255, 255, 255, 0.3);
+    position: absolute;
+    bottom: 5px;
+    font-size: 15px;
+    text-align: center;
+    width: 100%;
+}
