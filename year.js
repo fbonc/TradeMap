@@ -1,5 +1,5 @@
 const startYear = 1993;
-const currentYear = new Date().getFullYear() - 1;
+const currentYear = new Date().getFullYear() - 2;
 let selectedYear = currentYear;
 
 
